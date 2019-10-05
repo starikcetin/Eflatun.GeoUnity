@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "com.coffee.upm-git-extension": "https://github.com/mob-sakai/UpmGitExtension.git#0.9.1",
+    "com.glitchenzo.nugetforunity": "https://github.com/starikcetin/NuGetForUnity.git#1.2.3",
     "com.unity.collab-proxy": "1.2.16",
     "com.unity.ext.nunit": "1.0.0",
     "com.unity.ide.rider": "1.1.0",
@@ -40,5 +42,15 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "com.coffee.upm-git-extension": {
+      "hash": "79fa88282ae1233e4841d87fd256b80f13cd8b62",
+      "revision": "0.9.1"
+    },
+    "com.glitchenzo.nugetforunity": {
+      "hash": "80e6356903b6018861dc856216ae2c27837abc95",
+      "revision": "1.2.3"
+    }
   }
 }

@@ -1,3 +1,5 @@
+using System;
+using GeoCoordinatePortable;
 using UnityEngine;
 
 namespace starikcetin.Eflatun.GeoUnity
@@ -13,28 +15,28 @@ namespace starikcetin.Eflatun.GeoUnity
         /// <param name="distance">Distance to walk (in meters).</param>
         /// <param name="bearing">Direction in which we are walking (in degrees).</param>
         /// <returns>A new coordinate (in degrees).</returns>
-        public static Coordinates CalculateDestination(Coordinates origin, float distance, float bearing)
+        public static Coordinates CalculateDestination(Coordinates origin, double distance, double bearing)
         {
-            bearing *= Mathf.Deg2Rad;
+            bearing *= Const.Deg2Rad;
             origin = origin.ToRadians();
 
-            var sinLat = Mathf.Sin(origin.Latitude);
-            var cosLat = Mathf.Cos(origin.Latitude);
+            var sinLat = Math.Sin(origin.Latitude);
+            var cosLat = Math.Cos(origin.Latitude);
 
             var theta = distance / Const.EarthRadius;
-            var sinBearing = Mathf.Sin(bearing);
-            var cosBearing = Mathf.Cos(bearing);
-            var sinTheta = Mathf.Sin(theta);
-            var cosTheta = Mathf.Cos(theta);
+            var sinBearing = Math.Sin(bearing);
+            var cosBearing = Math.Cos(bearing);
+            var sinTheta = Math.Sin(theta);
+            var cosTheta = Math.Cos(theta);
 
-            var resultLatitude = Mathf.Asin(sinLat * cosTheta + cosLat * sinTheta * cosBearing);
+            var resultLatitude = Math.Asin(sinLat * cosTheta + cosLat * sinTheta * cosBearing);
             var resultLongitude = origin.Longitude +
-                                  Mathf.Atan2(sinBearing * sinTheta * cosLat,
-                                      cosTheta - sinLat * Mathf.Sin(resultLatitude)
+                                  Math.Atan2(sinBearing * sinTheta * cosLat,
+                                      cosTheta - sinLat * Math.Sin(resultLatitude)
                                   );
 
             // normalize -PI -> +PI radians
-            resultLongitude = ((resultLongitude + Const.ThreePi) % Const.TwoPi) - Mathf.PI;
+            resultLongitude = ((resultLongitude + Const.ThreePi) % Const.TwoPi) - Math.PI;
 
             var result = new Coordinates(resultLatitude, resultLongitude, AngleType.Radians);
             return result.ToDegrees();
@@ -47,17 +49,12 @@ namespace starikcetin.Eflatun.GeoUnity
         /// <param name="start">Start point.</param>
         /// <param name="end">End point.</param>
         /// <returns>The distance in meters between <paramref name="start"/> and <paramref name="end"/>.</returns>
-        public static float DistanceBetween(Coordinates start, Coordinates end)
+        public static double DistanceBetween(Coordinates start, Coordinates end)
         {
-            start = start.ToRadians();
-            end = end.ToRadians();
+            var startGC = (GeoCoordinate) start;
+            var endGC = (GeoCoordinate) end;
 
-            var delta = Delta(start, end);
-
-            var a = delta.Latitude * delta.Latitude +
-                    delta.Longitude * delta.Longitude * Mathf.Cos(start.Latitude) * Mathf.Cos(end.Latitude);
-
-            return Const.EarthRadius * 2 * Mathf.Atan2(Mathf.Sqrt(a), Mathf.Sqrt(1 - a));
+            return startGC.GetDistanceTo(endGC);
         }
 
         /// <summary>
@@ -73,11 +70,50 @@ namespace starikcetin.Eflatun.GeoUnity
             end = end.ToRadians();
 
             var result = new Coordinates(
-                Mathf.Sin((end.Latitude - start.Latitude) / 2),
+                Math.Sin((end.Latitude - start.Latitude) / 2),
                 (end.Longitude - start.Longitude) / 2,
                 AngleType.Radians);
 
             return result.ToDegrees();
+        }
+
+        public static double BearingBetween(Coordinates start, Coordinates end)
+        {
+            start = start.ToRadians();
+            end = end.ToRadians();
+
+            var y = Math.Sin(end.Longitude - start.Longitude) * Math.Cos(end.Latitude);
+            var x = Math.Cos(start.Latitude) * Math.Sin(end.Latitude) -
+                Math.Sin(start.Latitude) * Math.Cos(end.Latitude) * Math.Cos(end.Longitude - start.Longitude);
+            var result = Math.Atan2(y, x) * Const.Rad2Deg;
+
+            return NormalizeDegrees(result);
+        }
+
+        public static double NormalizeDegrees(double degrees)
+        {
+            while (degrees < 0)
+            {
+                degrees += 360;
+            }
+
+            return degrees % 360;
+        }
+
+        public static double NormalizeRadians(double radians)
+        {
+            while (radians < -Math.PI)
+            {
+                radians += Math.PI;
+            }
+
+            return radians % Math.PI;
+        }
+
+        public static bool Approx(double a, double b, double maxError, out double error)
+        {
+            error = Math.Abs(a - b);
+            return error < maxError;
         }
     }
 }

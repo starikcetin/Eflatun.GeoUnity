@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace starikcetin.Eflatun.GeoUnity
@@ -7,16 +8,26 @@ namespace starikcetin.Eflatun.GeoUnity
         /// <summary>
         /// Earth radius in meters.
         /// </summary>
-        public const float EarthRadius = 6371000;
+        public const double EarthRadius = 6371000;
 
         /// <summary>
         /// 3 * PI
         /// </summary>
-        public const float ThreePi = Mathf.PI * 3;
+        public const double ThreePi = Math.PI * 3;
 
         /// <summary>
         /// 2 * PI
         /// </summary>
-        public const float TwoPi = Mathf.PI * 2;
+        public const double TwoPi = Math.PI * 2;
+
+        /// <summary>
+        /// PI / 180
+        /// </summary>
+        public const double Deg2Rad = Math.PI / 180.0;
+
+        /// <summary>
+        /// 180 / PI
+        /// </summary>
+        public const double Rad2Deg = 180.0 / Math.PI;
     }
 }

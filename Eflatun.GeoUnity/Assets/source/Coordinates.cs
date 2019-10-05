@@ -1,26 +1,45 @@
 ﻿using System;
+using GeoCoordinatePortable;
+using UnityEngine;
 
 namespace starikcetin.Eflatun.GeoUnity
 {
     public struct Coordinates : IEquatable<Coordinates>
     {
-        private readonly AngleType _angleType;
+        public double Latitude { get; }
+        public double Longitude { get; }
+        public AngleType AngleType { get; }
 
-        public float Latitude { get; }
-        public float Longitude { get; }
-
-        public Coordinates(float latitude, float longitude, AngleType angleType)
+        public Coordinates(double latitude, double longitude, AngleType angleType)
         {
             Latitude = latitude;
             Longitude = longitude;
-            _angleType = angleType;
+            AngleType = angleType;
         }
 
         public Coordinates(Coordinates other)
         {
             Latitude = other.Latitude;
             Longitude = other.Longitude;
-            _angleType = other._angleType;
+            AngleType = other.AngleType;
+        }
+
+        public Coordinates(GeoCoordinate gc)
+        {
+            Latitude = gc.Latitude;
+            Longitude = gc.Longitude;
+            AngleType = AngleType.Degrees;
+        }
+
+        public static explicit operator GeoCoordinate(Coordinates coords)
+        {
+            coords = coords.ToDegrees();
+            return new GeoCoordinate(coords.Latitude, coords.Longitude);
+        }
+
+        public static explicit operator Coordinates(GeoCoordinate coords)
+        {
+            return new Coordinates(coords.Latitude, coords.Longitude, AngleType.Degrees);
         }
 
         //
@@ -62,23 +81,23 @@ namespace starikcetin.Eflatun.GeoUnity
         public static Coordinates operator +(Coordinates left, Coordinates right)
         {
             right = right.ConvertToAngleTypeOf(left);
-            return new Coordinates(left.Latitude + right.Latitude, left.Longitude + right.Longitude, left._angleType);
+            return new Coordinates(left.Latitude + right.Latitude, left.Longitude + right.Longitude, left.AngleType);
         }
 
         public static Coordinates operator -(Coordinates left, Coordinates right)
         {
             right = right.ConvertToAngleTypeOf(left);
-            return new Coordinates(left.Latitude - right.Latitude, left.Longitude - right.Longitude, left._angleType);
+            return new Coordinates(left.Latitude - right.Latitude, left.Longitude - right.Longitude, left.AngleType);
         }
 
-        public static Coordinates operator *(Coordinates left, float right)
+        public static Coordinates operator *(Coordinates left, double right)
         {
-            return new Coordinates(left.Latitude * right, left.Longitude * right, left._angleType);
+            return new Coordinates(left.Latitude * right, left.Longitude * right, left.AngleType);
         }
 
-        public static Coordinates operator /(Coordinates left, float right)
+        public static Coordinates operator /(Coordinates left, double right)
         {
-            return new Coordinates(left.Latitude / right, left.Longitude / right, left._angleType);
+            return new Coordinates(left.Latitude / right, left.Longitude / right, left.AngleType);
         }
 
         //
@@ -87,17 +106,29 @@ namespace starikcetin.Eflatun.GeoUnity
 
         public Coordinates ToRadians()
         {
-            return this.ConvertTo(AngleType.Radians);
+            if (AngleType == AngleType.Radians)
+            {
+                return this;
+            }
+
+            var rad =  this * Const.Deg2Rad;
+            return new Coordinates(rad.Latitude, rad.Longitude, AngleType.Radians);
         }
 
         public Coordinates ToDegrees()
         {
-            return this.ConvertTo(AngleType.Degrees);
+            if (AngleType == AngleType.Degrees)
+            {
+                return this;
+            }
+
+            var rad =  this * Const.Rad2Deg;
+            return new Coordinates(rad.Latitude, rad.Longitude, AngleType.Degrees);
         }
 
         public Coordinates ConvertTo(AngleType type)
         {
-            if (_angleType == type)
+            if (AngleType == type)
             {
                 return this;
             }
@@ -117,7 +148,7 @@ namespace starikcetin.Eflatun.GeoUnity
 
         public Coordinates ConvertToAngleTypeOf(Coordinates other)
         {
-            return this.ConvertTo(other._angleType);
+            return this.ConvertTo(other.AngleType);
         }
     }
 }
