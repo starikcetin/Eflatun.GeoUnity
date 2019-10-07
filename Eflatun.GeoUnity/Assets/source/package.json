@@ -1,0 +1,9 @@
+{
+    "author": "starikcetin <cetinsamedtarik@gmail.com> (https://github.com/starikcetin)",
+    "dependencies": {},
+    "description": "Geographical coordinate projections and calculation utilities",
+    "displayName": "Eflatun.GeoUnity",
+    "license": "MIT",
+    "name": "com.starikcetin.eflatun.geounity",
+    "version": "0.0.1"
+}
