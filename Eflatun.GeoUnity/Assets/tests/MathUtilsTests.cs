@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using starikcetin.Eflatun.GeoUnity.Calculation;
 
 namespace starikcetin.Eflatun.GeoUnity.tests
 {
@@ -7,7 +8,7 @@ namespace starikcetin.Eflatun.GeoUnity.tests
         [Test]
         public void CalculateDestination_Distance()
         {
-            var origin = new Coordinates(0.0, 0.0, AngleType.Degrees);
+            var origin = new Coordinates(0.0, 0.0, 0.0, AngleType.Degrees);
 
             var target = MathUtils.CalculateDestination(origin, TestUtils.DistanceInMeters, TestUtils.BearingInAngles);
             var calculatedDistance = MathUtils.DistanceBetween(origin, target);
@@ -18,12 +19,12 @@ namespace starikcetin.Eflatun.GeoUnity.tests
         [Test]
         public void CalculateDestination_Bearing()
         {
-            var origin = new Coordinates(0.0, 0.0, AngleType.Degrees);
+            var origin = new Coordinates(0.0, 0.0, 0.0, AngleType.Degrees);
 
             var target = MathUtils.CalculateDestination(origin, TestUtils.DistanceInMeters, TestUtils.BearingInAngles);
             var calculatedBearing = MathUtils.BearingBetween(origin, target);
 
-            var normalizedActualBearing = MathUtils.NormalizeDegrees(TestUtils.BearingInAngles);
+            var normalizedActualBearing = MathExtended.NormalizeDegrees(TestUtils.BearingInAngles);
             TestUtils.AssertApprox(normalizedActualBearing, calculatedBearing, TestUtils.ErrorType.Bearing);
         }
     }

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 
-namespace GeoCoordinatePortable
+namespace System.Device.Location
 {
     /// <summary>
     /// Represents a geographical location that is determined by latitude and longitude

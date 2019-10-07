@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using starikcetin.Eflatun.GeoUnity.Calculation;
 
 namespace starikcetin.Eflatun.GeoUnity.tests
 {
@@ -7,7 +8,7 @@ namespace starikcetin.Eflatun.GeoUnity.tests
         [Test]
         public void OnCircle_Distance()
         {
-            var center = new Coordinates();
+            var center = new Coordinates(0, 0);
 
             var target = RandomUtils.OnCircle(center, TestUtils.DistanceInMeters);
             var calculatedDistance = MathUtils.DistanceBetween(center, target);

@@ -1,7 +1,6 @@
 using System;
-using UnityEngine;
 
-namespace starikcetin.Eflatun.GeoUnity
+namespace starikcetin.Eflatun.GeoUnity.Calculation
 {
     public static class Const
     {

@@ -5,7 +5,7 @@ namespace starikcetin.Eflatun.GeoUnity.tests
 {
     public static class TestUtils
     {
-        private static readonly bool AllowErrors = false;
+        private static readonly bool AllowErrors = true;
 
         private const double DistanceMaxErrorInMetersPerMeter = 0.000864;
         private const double AngleMaxErrorInDegreesPerMeter = 0.000015;
@@ -39,7 +39,7 @@ namespace starikcetin.Eflatun.GeoUnity.tests
                 }
             }
 
-            Assert.That(MathUtils.Approx(a, b, maxError, out var error),
+            Assert.That(MathExtended.Approx(a, b, maxError, out var error),
                 "expected: {0} result: {1} \n maxError: {2} error: {3} \n delta: {4}",
                 a, b, maxError, error, error - maxError);
         }
