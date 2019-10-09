@@ -30,7 +30,7 @@ namespace starikcetin.Eflatun.GeoUnity.Calculation
         public static Coordinates InCircle(Coordinates center, double radius)
         {
             center = center.ToRadians();
-            var rnd = Random.Range(0, 1);
+            var rnd = Random.Range(0f, 1f);
             // use square root of random number to avoid high density at the center
             var randomDist = Math.Sqrt(rnd) * radius;
             var result = OnCircle(center, randomDist);
