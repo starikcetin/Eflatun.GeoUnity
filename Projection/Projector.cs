@@ -21,41 +21,14 @@ namespace starikcetin.Eflatun.GeoUnity.Projection
             _inverseTransform = ctfac.CreateFromCoordinateSystems(toCs, fromCs);
         }
 
-        private double[] _Project(double[] pointInWgs84)
+        public double[] Project(double[] @from)
         {
-            return _forwardTransform.MathTransform.Transform(pointInWgs84);
+            return _forwardTransform.MathTransform.Transform(@from);
         }
 
-        private double[] _InverseProject(double[] pointInWebMercator)
+        public double[] InverseProject(double[] @from)
         {
-            return _inverseTransform.MathTransform.Transform(pointInWebMercator);
-        }
-
-        public GeoCoordinate Project(GeoCoordinate pointInWgs84)
-        {
-            return _Transform(pointInWgs84, _Project);
-        }
-
-        public GeoCoordinate InverseProject(GeoCoordinate pointInWebMercator)
-        {
-            return _Transform(pointInWebMercator, _InverseProject);
-        }
-
-        private static GeoCoordinate _Transform(GeoCoordinate from, Func<double[], double[]> transformFunction)
-        {
-            double[] fromArr = {from.Latitude, from.Longitude, from.Altitude};
-            double[] toArr = transformFunction.Invoke(fromArr);
-
-            double lat = toArr[0];
-            double lon = toArr[1];
-
-            if (toArr.Length == 3)
-            {
-                double alt = toArr[2];
-                return new GeoCoordinate(lat, lon, alt);
-            }
-
-            return new GeoCoordinate(lat, lon);
+            return _inverseTransform.MathTransform.Transform(@from);
         }
     }
 }

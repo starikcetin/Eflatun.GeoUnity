@@ -1,6 +1,6 @@
 namespace starikcetin.Eflatun.GeoUnity.Projection
 {
-    public enum Vector3UpwardsAxis
+    public enum Vector3AltitudeAxis
     {
         Y,
         Z

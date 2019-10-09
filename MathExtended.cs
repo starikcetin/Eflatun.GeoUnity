@@ -16,9 +16,27 @@ namespace starikcetin.Eflatun.GeoUnity
             return 1.0 / Cos(val);
         }
 
+        public static double ATanh(double x)
+        {
+            return (Log(1 + x) - Log(1 - x))/2;
+        }
+
+        public static double GdReverse(double val)
+        {
+            double d = val / 2.0;
+            double d1 = 1.0 / d;
+            double aTanh = ATanh(d1);
+            double tan = Tan(aTanh);
+            return tan / 2.0;
+        }
+
         public static double Gd(double val)
         {
-            return 2 * Atan(Tanh(1 / (2 * val)));
+            double d = 2.0 * val;
+            double value = 1.0 / d;
+            double tanh = Tanh(value);
+            double atan = Atan(tanh);
+            return 2.0 * atan;
         }
 
         public static unityVector3 ConvertToUnityVector(doubleVector3 doubleVector)
@@ -61,6 +79,16 @@ namespace starikcetin.Eflatun.GeoUnity
         {
             error = Abs(a - b);
             return error < maxError;
+        }
+
+        public static unityVector3 DoubleVectorToUnityVector(doubleVector3 dv3)
+        {
+            return new unityVector3((float) dv3.X, (float) dv3.Y, (float) dv3.Z);
+        }
+
+        public static doubleVector3 UnityVectorToDoubleVector(unityVector3 uv3)
+        {
+            return new doubleVector3(uv3.x, uv3.y, uv3.z);
         }
     }
 }
