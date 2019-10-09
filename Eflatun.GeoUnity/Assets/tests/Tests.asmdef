@@ -12,7 +12,17 @@
     "allowUnsafeCode": false,
     "overrideReferences": true,
     "precompiledReferences": [
-        "nunit.framework.dll"
+        "nunit.framework.dll",
+        "System.DoubleNumerics.dll",
+        "DotNetZip.dll",
+        "GeoAPI.CoordinateSystems.dll",
+        "GeoAPI.dll",
+        "Markdig.dll",
+        "NetTopologySuite.dll",
+        "ProjNET.dll",
+        "System.Buffers.dll",
+        "System.Memory.dll",
+        "System.Runtime.CompilerServices.Unsafe.dll"
     ],
     "autoReferenced": false,
     "defineConstraints": [
