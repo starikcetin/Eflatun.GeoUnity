@@ -1,9 +1,0 @@
-{
-    "author": "starikcetin <cetinsamedtarik@gmail.com> (https://github.com/starikcetin)",
-    "dependencies": {},
-    "description": "Geographical (latitude, longitude) projection and calculation library",
-    "displayName": "Eflatun.GeoUnity",
-    "license": "MIT",
-    "name": "com.starikcetin.eflatun.geounity",
-    "version": "0.1.1"
-}
