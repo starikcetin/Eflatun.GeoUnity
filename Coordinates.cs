@@ -191,5 +191,14 @@ namespace starikcetin.Eflatun.GeoUnity
         /// (0, 0)
         /// </summary>
         public static readonly Coordinates Zero = new Coordinates(0, 0);
+
+        //
+        // ToString
+        //
+
+        public override string ToString()
+        {
+            return $"({AngleType}, {nameof(Latitude)}: {Latitude}, {nameof(Longitude)}: {Longitude}, {nameof(Altitude)}: {Altitude})";
+        }
     }
 }
