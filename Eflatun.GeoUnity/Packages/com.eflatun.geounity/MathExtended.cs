@@ -2,7 +2,7 @@ using static System.Math;
 using doubleVector3 = System.DoubleNumerics.Vector3;
 using unityVector3 = UnityEngine.Vector3;
 
-namespace starikcetin.Eflatun.GeoUnity
+namespace Eflatun.GeoUnity
 {
     public static class MathExtended
     {

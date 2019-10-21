@@ -1,4 +1,5 @@
 using System;
+using Eflatun.GeoUnity;
 using NUnit.Framework;
 
 namespace starikcetin.Eflatun.GeoUnity.tests

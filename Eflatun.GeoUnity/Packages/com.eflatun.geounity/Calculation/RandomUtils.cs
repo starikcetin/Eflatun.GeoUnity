@@ -1,7 +1,7 @@
 using System;
 using Random = UnityEngine.Random;
 
-namespace starikcetin.Eflatun.GeoUnity.Calculation
+namespace Eflatun.GeoUnity.Calculation
 {
     public static class RandomUtils
     {

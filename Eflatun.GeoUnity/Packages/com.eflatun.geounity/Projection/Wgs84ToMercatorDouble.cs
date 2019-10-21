@@ -1,7 +1,7 @@
 using ProjNet.CoordinateSystems;
 using doubleVector3 = System.DoubleNumerics.Vector3;
 
-namespace starikcetin.Eflatun.GeoUnity.Projection
+namespace Eflatun.GeoUnity.Projection
 {
     public class Wgs84ToMercatorDouble
     {

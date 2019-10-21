@@ -1,6 +1,7 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
-namespace System.Device.Location
+namespace Eflatun.GeoUnity.External
 {
     /// <summary>
     /// Represents a geographical location that is determined by latitude and longitude

@@ -1,5 +1,6 @@
-﻿using NUnit.Framework;
-using starikcetin.Eflatun.GeoUnity.Calculation;
+﻿using Eflatun.GeoUnity;
+using Eflatun.GeoUnity.Calculation;
+using NUnit.Framework;
 
 namespace starikcetin.Eflatun.GeoUnity.tests
 {

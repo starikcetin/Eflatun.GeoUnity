@@ -1,6 +1,7 @@
+using Eflatun.GeoUnity;
+using Eflatun.GeoUnity.Calculation;
+using Eflatun.GeoUnity.Projection;
 using NUnit.Framework;
-using starikcetin.Eflatun.GeoUnity.Calculation;
-using starikcetin.Eflatun.GeoUnity.Projection;
 using UnityEngine;
 
 namespace starikcetin.Eflatun.GeoUnity.tests

@@ -1,4 +1,4 @@
-namespace starikcetin.Eflatun.GeoUnity.Projection
+namespace Eflatun.GeoUnity.Projection
 {
     public enum Vector3AltitudeAxis
     {

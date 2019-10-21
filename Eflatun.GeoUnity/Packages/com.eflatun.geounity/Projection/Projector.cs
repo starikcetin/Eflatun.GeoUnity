@@ -1,10 +1,8 @@
-using System;
-using System.Device.Location;
 using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
 using ICoordinateTransformation = ProjNet.CoordinateSystems.Transformations.ICoordinateTransformation;
 
-namespace starikcetin.Eflatun.GeoUnity.Projection
+namespace Eflatun.GeoUnity.Projection
 {
     /// <summary>
     /// Performs forward and inverse projections between two coordinate systems.
