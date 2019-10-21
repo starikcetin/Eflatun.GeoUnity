@@ -1,8 +1,7 @@
 using System;
 using doubleVector3 = System.DoubleNumerics.Vector3;
-using unityVector3 = UnityEngine.Vector3;
 
-namespace starikcetin.Eflatun.GeoUnity.Projection
+namespace Eflatun.GeoUnity.Projection
 {
     public static class ProjectionUtils
     {

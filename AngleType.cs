@@ -1,4 +1,4 @@
-namespace starikcetin.Eflatun.GeoUnity
+namespace Eflatun.GeoUnity
 {
     public enum AngleType
     {

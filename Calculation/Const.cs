@@ -1,6 +1,6 @@
 using System;
 
-namespace starikcetin.Eflatun.GeoUnity.Calculation
+namespace Eflatun.GeoUnity.Calculation
 {
     public static class Const
     {

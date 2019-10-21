@@ -1,8 +1,7 @@
-using static starikcetin.Eflatun.GeoUnity.MathExtended;
-using doubleVector3 = System.DoubleNumerics.Vector3;
+using static Eflatun.GeoUnity.MathExtended;
 using unityVector3 = UnityEngine.Vector3;
 
-namespace starikcetin.Eflatun.GeoUnity.Projection
+namespace Eflatun.GeoUnity.Projection
 {
     public class Wgs84ToMercatorUnity
     {

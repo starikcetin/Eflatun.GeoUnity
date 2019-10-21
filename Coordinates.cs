@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Device.Location;
-using starikcetin.Eflatun.GeoUnity.Projection;
-using static starikcetin.Eflatun.GeoUnity.Calculation.Const;
-using static starikcetin.Eflatun.GeoUnity.MathExtended;
+using Eflatun.GeoUnity.External;
+using static Eflatun.GeoUnity.Calculation.Const;
+using static Eflatun.GeoUnity.MathExtended;
 
-namespace starikcetin.Eflatun.GeoUnity
+namespace Eflatun.GeoUnity
 {
     public class Coordinates : IEquatable<Coordinates>
     {

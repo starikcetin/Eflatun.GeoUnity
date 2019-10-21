@@ -1,8 +1,8 @@
 using static System.Math;
-using static starikcetin.Eflatun.GeoUnity.Calculation.Const;
-using static starikcetin.Eflatun.GeoUnity.MathExtended;
+using static Eflatun.GeoUnity.Calculation.Const;
+using static Eflatun.GeoUnity.MathExtended;
 
-namespace starikcetin.Eflatun.GeoUnity.Calculation
+namespace Eflatun.GeoUnity.Calculation
 {
     public static class MathUtils
     {
